@@ -409,9 +409,9 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/fourier/futr8t.vf
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futr8t.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futb8t.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futrc8t.tfm
-INPUT /Users/samuelfleischer/School/UCD/UCD_Math207C/hw_1-apr_08/problem_2.png
-INPUT /Users/samuelfleischer/School/UCD/UCD_Math207C/hw_1-apr_08/problem_2.png
-INPUT /Users/samuelfleischer/School/UCD/UCD_Math207C/hw_1-apr_08/problem_2.png
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/fourier/ts1futs.fd
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/fourier/ts1futs.fd
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futr8c.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/fourier/futb8t.vf
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futb8r.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-alt-bold.tfm
@@ -428,10 +428,15 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-mcl.tf
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/fourier/futsy.vf
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-ms.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-mcl.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/fourier/futr8c.vf
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-orns.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/fourier/futmii.vf
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-mlit.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-ml.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futri8r.tfm
+INPUT /Users/samuelfleischer/School/UCD/UCD_Math207C/hw_1-apr_08/problem_2.png
+INPUT /Users/samuelfleischer/School/UCD/UCD_Math207C/hw_1-apr_08/problem_2.png
+INPUT /Users/samuelfleischer/School/UCD/UCD_Math207C/hw_1-apr_08/problem_2.png
 INPUT /Users/samuelfleischer/School/UCD/UCD_Math207C/hw_1-apr_08/hw_1.aux
 INPUT /Users/samuelfleischer/School/UCD/UCD_Math207C/hw_1-apr_08/hw_1.out
 INPUT /Users/samuelfleischer/School/UCD/UCD_Math207C/hw_1-apr_08/hw_1.out
@@ -439,6 +444,7 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-mlit.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb

@@ -118,6 +118,35 @@ Find the two-term asymptotic expansion for small $\E$ for all real roots $x$ of 
     \item $\E^2 x^3 - x + \E = 0$
     \item $\E \exp(x^2) = 1 + \dfrac{\E}{1 + x^2}$
 \end{enumerate}}
+\begin{enumerate}[(a)]
+    \item
+        First note that if $\E = 0$, then $x = 0$.  Let $x = x_0 + x_1 \E + x_2 \E^2 + \dots$.  Then
+        \begin{align*}
+            \E^2\qty(x_0 + x_1 \E + x_2 \E^2 + \dots)^3 - \qty(x_0 + x_1 \E + x_2 \E^2 + \dots) + \E = 0 \\
+            \implies \E^2\qty(x_0^3 + 3x_0^2x_1 \E + \qty(3x_0^2x_2 + 3x_0x_1^2) \E^2 + \dots) - \qty(x_0 + x_1\E + x_2 \E^2 + \dots) + \E = 0 \\
+            \implies x_0 = 0 \qquad \text{and} \qquad x_1 = 1 \qquad \text{and} \qquad x_2 = 0 \\
+            \implies x = \E + O\qty(\E^3)
+        \end{align*}
+        Next we rescale to find the other two roots.  Let $x = \E^{-1} y$.  Then
+        \begin{align*}
+            \E^{-1}y^3 - \E^{-1}y + \E = 0 \\
+            \implies y^3 - y + \E^2 = 0
+        \end{align*}
+        Let $y = y_0 + y_1 \E + y_2 \E^2 + \dots$.  Then
+        \begin{align*}
+            \qty(y_0 + y_1 \E + y_2 \E^2 + \dots)^3 - \qty(y_0 + y_1 \E + y_2 \E^2 + \dots) + \E^2 = 0 \\
+            \implies \qty(y_0^3 + 3y_0^2y_1 \E + \qty(3y_0^2y_2 + 3y_1^2)\E^2 + \dots) - \qty(y_0 + y_1 \E + y_2 \E^2 + \dots) + \E^2 = 0 \\
+            \implies y_0^3 - y_0 = 0 \iff y_0 = 0, \pm 1 \qquad \text{and} \qquad \qty(3y_0^2 - 1)y_1 = 0 \implies \cancel{y_0^2 = \frac{1}{3}} \text{ or } y_1 = 0 \\
+            \implies 3y_0^2y_2 - y_2 + 1 = 0 \implies y_2 = \frac{1}{1 - 3y_0^2}
+        \end{align*}
+        If $y_0 = 0$, then $y_2 = 1$.  If $y_0 = \pm 1$, then $y_2 = -\frac{1}{2}$.  Thus the asymptotic solutions are
+        \begin{itemize}
+            \item $y = \E^2 + O\qty(\E^3)$ (this matches with the asymptotic solution reached above).
+            \item $y = \pm 1 - \frac{1}{2}\E^2 + O\qty(\E^3)$.  These are impossible to get in the original scaling since as $y \rightarrow \pm 1$, $x \rightarrow \pm \infty$.
+        \end{itemize}
+    \item
+
+\end{enumerate}
 
 
 

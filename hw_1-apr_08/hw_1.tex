@@ -124,8 +124,10 @@ Find the two-term asymptotic expansion for small $\E$ for all real roots $x$ of 
         \begin{align*}
             \E^2\qty(x_0 + x_1 \E + x_2 \E^2 + \dots)^3 - \qty(x_0 + x_1 \E + x_2 \E^2 + \dots) + \E = 0 \\
             \implies \E^2\qty(x_0^3 + 3x_0^2x_1 \E + \qty(3x_0^2x_2 + 3x_0x_1^2) \E^2 + \dots) - \qty(x_0 + x_1\E + x_2 \E^2 + \dots) + \E = 0 \\
-            \implies x_0 = 0 \qquad \text{and} \qquad x_1 = 1 \qquad \text{and} \qquad x_2 = 0 \\
-            \implies x = \E + O\qty(\E^3)
+            \implies x_0 = 0 \qquad \text{and} \qquad x_1 = 1 \qquad \text{and} \qquad x_2 = 0 \qquad \text{and} \qquad x_3 = 0 \qquad \text{and} \qquad x_4 = 0 \\
+            \implies \E^2\qty(x_1^3\E^3 + \dots) - \qty(x_1\E + x_5 \E^5 + \dots) + \E = 0 \\
+            \implies x_5 = 1 \\
+            \implies x = \E + \E^5 + O\qty(\E^6)
         \end{align*}
         Next we rescale to find the other two roots.  Let $x = \E^{-1} y$.  Then
         \begin{align*}
@@ -144,8 +146,41 @@ Find the two-term asymptotic expansion for small $\E$ for all real roots $x$ of 
             \item $y = \E^2 + O\qty(\E^3)$ (this matches with the asymptotic solution reached above).
             \item $y = \pm 1 - \frac{1}{2}\E^2 + O\qty(\E^3)$.  These are impossible to get in the original scaling since as $y \rightarrow \pm 1$, $x \rightarrow \pm \infty$.
         \end{itemize}
+        Thus, the asymptotic solutions are
+        \begin{align*}
+            \boxed{x \approx \E + \E^5 \qquad \text{and} \qquad x \approx \dfrac{\pm 1 - \frac{1}{2}\E^2}{\E}}
+        \end{align*}
     \item
-
+        First, make the substitution $y = x^2$:
+        \begin{align*}
+            \E \exp(y) = 1 + \frac{\E}{1 + y}
+        \end{align*}
+        and note that as $\E \rightarrow 0$, we expect $y \rightarrow \infty$.  Thus $1 + \frac{\E}{1 + y} \approx 1$.  Thus,
+        \begin{align*}
+            \E \exp(y) &\approx 1 \\
+            \implies y &\approx \log(\E^{-1})
+        \end{align*}
+        Thus $y = \log(\E^{-1}) + g(\E)$ where $g(\E) = o\qty(\log(\E^{-1}))$.  Then
+        \begin{align*}
+            \E\exp(\log(\E^{-1}) + g(\E)) &= 1 + \frac{\E}{1 + \log(\E^{-1}) + g(\E)} \\
+            \implies \E\exp(\log(\E^{-1}))\exp(g(\E)) &= 1 + \frac{\E}{1 + \log(\E^{-1}) + g(\E)} \\
+            \implies \exp(g(\E)) &= 1 + \frac{\E}{1 + \log(\E^{-1}) + g(\E)} \\
+            \implies g(\E) &= \log(1 + \frac{\E}{1 + \log(\E^{-1}) + g(\E)}) \\
+            &= \frac{\E}{1 + \log(\E^{-1}) + g(\E)} - \frac{1}{2}\qty(\frac{\E}{1 + \log(\E^{-1}) + g(\E)})^2 + \dots
+        \end{align*}
+        We can use the Taylor expansion of $\log(1 + x)$ since $\dfrac{\E}{1 + \log(\E^{-1}) + g(\E)} \rightarrow 0$ as $\E \rightarrow 0$.  Then
+        \begin{align*}
+            g(\E) &\approx \frac{\E}{1 + \log(\E^{-1}) + g(\E)} \\
+            &\approx \frac{\E}{\log(\E^{-1})}
+        \end{align*}
+        Note $\dfrac{\E}{\log(\E^{-1})} = o\qty(\log(\E^{-1}))$ since
+        \begin{align*}
+            \lim_{\E \rightarrow 0} \frac{\frac{\E}{\log(\E^{-1})}}{\log(\E^{-1})} = \frac{\E}{\qty(\log(\E^{-1}))^2} = 0
+        \end{align*}
+        Thus $y \approx \log(\E^{-1}) + \dfrac{\E}{\log(\E^{-1})}$, and hence the asymptotic solutions are
+        \begin{align*}
+            \boxed{x \approx \pm \sqrt{\log(\E^{-1}) + \dfrac{\E}{\log(\E^{-1})}}}
+        \end{align*}
 \end{enumerate}
 
 

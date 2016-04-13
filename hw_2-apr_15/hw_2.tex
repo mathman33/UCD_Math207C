@@ -1,0 +1,181 @@
+\documentclass{article} % A4 paper and 11pt font size
+\setcounter{secnumdepth}{0}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{color}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[makeroom]{cancel}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage[normalem]{ulem}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\E}{\varepsilon}
+\def\Rl{\mathbb{R}}
+\def\Cx{\mathbb{C}}
+
+\newcommand{\Ei}{\text{Ei}}
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancy} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead[L]{\bf Sam Fleischer}
+\fancyhead[C]{\bf UC Davis \\ Applied Mathematics (MAT207C)} % No page header - if you want one, create it in the same way as the footers below
+\fancyhead[R]{\bf Spring 2016}
+
+\fancyfoot[L]{\bf } % Empty left footer
+\fancyfoot[C]{\bf \thepage} % Empty center footer
+\fancyfoot[R]{\bf } % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{25pt} % Customize the height of the header
+
+\newcommand{\VEC}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\ran}{\text{\rm ran }}
+\newcommand{\Hilb}{\mathcal{H}}
+
+\DeclareMathOperator*{\esssup}{\text{ess~sup}}
+
+\newcommand{\problem}[2]{
+\vspace{.375cm}
+\boxed{\begin{minipage}{\textwidth}
+    \section{\bf #1}
+    #2
+\end{minipage}}
+}
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.9}
+
+\title{ 
+\normalfont \normalsize 
+\textsc{UC Davis, Applied Mathematics (MAT207C), Spring 2016} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{2pt} \\[0.4cm] % Thin top horizontal rule
+\Huge Homework \#2 \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{\huge Sam Fleischer} % Your name
+
+\date{April 15, 2016} % Today's date or a custom date
+
+\begin{document}\thispagestyle{empty}
+
+\maketitle % Print the title
+
+\makeatletter
+\@starttoc{toc}
+\makeatother
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Problem 1}{Compute the swimming speed of an undulating sheet moving at zero Reynolds number between two walls on which the velocity is zero (in lab frame) located at $y = \pm L$ in the limit of low amplitude.  In the reference frame moving with the swimming, the shape of the swimmer is $y = A \sin(kx - \omega t)$.}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Problem 2}{Suppose the position of a mass on a damped linear spring obeys the following equation $$m\ddot{x} + b\dot{x} + kx = 0,$$ where $m$, $b$, and $k$ are constants representing the mass, damping coefficient, and spring constant, respectively.
+\begin{enumerate}[(a)]
+    \item Each term in the above equation has dimensions of force.  Identify the dimensions of $b$ and $k$ in terms of mass, length, and time.
+    \item Identify the three time scales in the problem and discuss their physical meaning.
+    \item Present two different nondimensionalizations: one appropriate for the limit of vanishing friction and the other appropriate for the limit of vanishing mass.  Identify the small nondimensional parameter in each case.
+\end{enumerate}}
+\begin{enumerate}[(a)]
+    \item
+        Since the dimensions of force are $\dfrac{\text{mass}\cdot\text{length}}{\text{time}^2}$, the dimensions of $x$ are $\text{length}$, and the dimensions of $\dot{x}$ are $\dfrac{\text{length}}{\text{time}}$, then the dimensions of $b$ are $\dfrac{\text{mass}}{\text{time}}$ and the dimensions of $k$ are $\dfrac{\text{mass}}{\text{time}^2}$.
+    \item
+        Let $L(T) = \dfrac{x(t)}{X}$ and $T = \dfrac{t}{\tau}$.  Then
+        \begin{align*}
+            \dot{L} = \frac{\dd L}{\dd T} = \frac{\dd L}{\dd x} \frac{\dd x}{\dd t} \frac{\dd t}{\dd T} = \frac{\tau}{X}\dot{x} \qquad \text{and} \qquad \ddot{L} = \frac{\dd}{\dd T}\dot{L} = \frac{\dd}{\dd T} \qty[\frac{\tau}{X}\dot{x}] = \frac{\tau}{X} \frac{\dd}{\dd T} \dot{x} = \frac{\tau}{X}\frac{\dd t}{\dd T} \frac{\dd}{\dd t}\dot{x} = \frac{\tau^2}{X}\ddot{x}
+        \end{align*}
+        Thus,
+        \begin{align*}
+            m\ddot{L} + b\tau\dot{L} + k\tau^2 L = 0.
+        \end{align*}
+        There are three timescales:
+        \begin{enumerate}[(i)]
+            \item
+                Let $\tau = \frac{m}{b}$.  Then
+                \begin{align*}
+                    \ddot{L} + \dot{L} + \E L = 0
+                \end{align*}
+                where $\E = \frac{km}{b^2}$.
+            \item
+                Let $\tau = \sqrt{\frac{m}{k}}$.  Then
+                \begin{align*}
+                    \ddot{L} + \E\dot{L} + L = 0
+                \end{align*}
+                where $\E = \frac{b}{\sqrt{km}}$.
+            \item
+                Let $\tau = \frac{b}{k}$.  Then
+                \begin{align*}
+                    \E\ddot{L} + \dot{L} + L = 0
+                \end{align*}
+                where $\E = \frac{km}{b^2}$.
+        \end{enumerate}
+    \item
+        The nondimensionalization appropriate for the limit of vanishing friction is the second of the three given above:
+        \begin{align*}
+            \ddot{L} + \E\dot{L} + L = 0
+        \end{align*}
+        where $\E = \frac{b}{\sqrt{km}}$.
+    \item
+        The nondimensionalization appropriate for the limit of vanishing mass is the third of the three given above:
+        \begin{align*}
+            \E\ddot{L} + \dot{L} + L = 0
+        \end{align*}
+        where $\E = \frac{km}{b^2}$.
+\end{enumerate}
+
+
+
+
+
+
+\end{document}

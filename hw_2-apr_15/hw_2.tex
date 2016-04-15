@@ -258,19 +258,43 @@ Thus $s_1 = 0$.  However, since $kL > 0$ and $\omega > 0$, this is an apparent c
                 \begin{align*}
                     \ddot{L} + \dot{L} + \E L = 0
                 \end{align*}
-                where $\E = \frac{km}{b^2}$.
+                where $\E = \frac{km}{b^2}$.  The solution to this differential equation is
+                \begin{align*}
+                    L(T) &= A\exp[\lambda_1 T] + B\exp[\lambda_2 T]
+                \end{align*}
+                where
+                \begin{align*}
+                    \lambda_1, \lambda_2 = \frac{1}{2}\qty[-1 \pm \sqrt{1 - 4\E}]
+                \end{align*}
+                $\E > 0$ implies $\lambda_2 < 0 < \lambda 1$.  As $\E \rightarrow 0$, both $\lambda_1, \lambda_2 \rightarrow 0$.  This time scale represents the time to decay when the spring constant is exceptionally small.
             \item
                 Let $\tau = \sqrt{\frac{m}{k}}$.  Then
                 \begin{align*}
                     \ddot{L} + \E\dot{L} + L = 0
                 \end{align*}
-                where $\E = \frac{b}{\sqrt{km}}$.
+                where $\E = \frac{b}{\sqrt{km}}$.  The solution to this differential equation is
+                \begin{align*}
+                    L(T) &= A\exp[\lambda_1 T] + B\exp[\lambda_2 T]
+                \end{align*}
+                where
+                \begin{align*}
+                    \lambda_1, \lambda_2 = \frac{1}{2}\qty[-\E \pm \sqrt{\E^2 - 4}]
+                \end{align*}
+                For $\E < 2$, we see both eigenvalues are imaginary, and as $\E \rightarrow 0$, both $\lambda_1,\lambda_2 \rightarrow \pm 2i$.  This timescale is the period of the oscillations in the absence of friction.
             \item
                 Let $\tau = \frac{b}{k}$.  Then
                 \begin{align*}
                     \E\ddot{L} + \dot{L} + L = 0
                 \end{align*}
-                where $\E = \frac{km}{b^2}$.
+                where $\E = \frac{km}{b^2}$.  The solution to this differential equation is
+                \begin{align*}
+                    L(T) &= A\exp[\lambda_1 T] + B\exp[\lambda_2 T]
+                \end{align*}
+                where
+                \begin{align*}
+                    \lambda_1, \lambda_2 = \frac{1}{2\E}\qty[-1 \pm \sqrt{1 - 4\E}]
+                \end{align*}
+                When $\E < \frac{1}{4}$, $\lambda_1,\lambda_2 \in \Rl$.  In other words, when the mass is small enough (in comparison to spring constant and friction), there are no osciallations and only exponential decay.  This timescale is the time until the magnitude of the exponential decay overtakes the magnitude of the osciallations.
         \end{enumerate}
     \item
         The nondimensionalization appropriate for the limit of vanishing friction is the second of the three given above:

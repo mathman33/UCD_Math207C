@@ -67,6 +67,7 @@
 \newcommand{\VEC}[2]{\left\langle #1, #2 \right\rangle}
 \newcommand{\ran}{\text{\rm ran }}
 \newcommand{\Hilb}{\mathcal{H}}
+\newcommand{\lap}{\Delta}
 
 \DeclareMathOperator*{\esssup}{\text{ess~sup}}
 
@@ -113,6 +114,118 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \problem{Problem 1}{Compute the swimming speed of an undulating sheet moving at zero Reynolds number between two walls on which the velocity is zero (in lab frame) located at $y = \pm L$ in the limit of low amplitude.  In the reference frame moving with the swimming, the shape of the swimmer is $y = A \sin(kx - \omega t)$.}
+
+Stokes Equations are
+\begin{align*}
+    \lap \underline{u} - \grad p &= 0 \\
+    \div y &= 0
+\end{align*}
+Assume the height of the undulating sheet is given by $y = y(x,t)$
+\begin{align*}
+    y(x,t) = A\sin(kx - \omega t)
+\end{align*}
+Since the reference frame moves with the swimmer, the $x$ component of the velocity vector is $0$ at any given point, and the $y$ component of the velocity vector is $y_t(x,t)$, so the velocity vector $v$ is
+\begin{align*}
+    v(x, y(x,t)) = \qty[\begin{array}{c} 0 \\ -\omega A\cos(kx - \omega t) \end{array}]
+\end{align*}
+Since we assume the flow is two-dimensional and incompressible, then there is a stream function $\psi$ such that
+\begin{align*}
+    \underline{u} = \qty[\begin{array}{c} u \\ v\end{array}] = \qty[\begin{array}{c} \psi_y \\ -\psi_x \end{array}] = \qty[\begin{array}{c} 0 \\ -\omega A\cos(kx - \omega t) \end{array}]
+\end{align*}
+The two-dimensional Laplacian $\lap = \qty(\partial_{xx} + \partial_{yy})$ can then be applied:
+\begin{align*}
+    \qty(\partial_{xx} + \partial_{yy})\qty[\begin{array}{c} \psi_y \\ -\psi_x \end{array}] - \qty[\begin{array}{c} p_x \\ p_y \end{array}] &= \qty[\begin{array}{c} 0 \\ 0 \end{array}] \\
+    \implies \qty[\begin{array}{cc}\psi_{yxx} + \psi_{yyy} \\ -\psi_{xxx} - \psi_{xyy}\end{array}] - \qty[\begin{array}{c} p_x \\ p_y \end{array}] &= \qty[\begin{array}{c} 0 \\ 0 \end{array}] \\
+    \implies \begin{cases}
+        \psi_{yxxy} + \psi_{yyyy} - p_{xy} &= 0 \\
+        \psi_{xxxx} + \psi_{xyyx} + p_{yx} &= 0
+    \end{cases} \\
+    \implies \psi_{xxxx} + 2\psi_{xxyy} + \psi_{yyyy} &= 0 \\
+    \implies \lap^2\psi = \qty(\partial_{xx} + \partial_{yy})^2\psi &= 0
+\end{align*}
+Next we express $\psi_x$ and $\psi_y$ as Taylor Series', taken as $A \rightarrow 0$:
+\begin{align*}
+    \omega A \cos(kx - \omega t) &= \psi_x\qty(x, A\sin(kx - \omega t)) \\
+    &= \psi_x(x,0) + A\sin(kx - \omega t)\psi_{xy}(x,0) + \frac{A^2\sin^2\qty(kx - \omega t)}{2}\psi_{xyy}(x,0) + O(A^3) \\
+    0 &= \psi_y\qty(x, A\sin(kx - \omega t)) \\
+    &= \psi_y(x,0) + A\sin(kx - \omega t)\psi_{yy}(x,0) + \frac{A^2\sin^2\qty(kx - \omega t)}{2}\psi_{yyy}(x,0) + O(A^3)
+\end{align*}
+Next we assume $\psi$ can be expanded in the asymptotic basis $\{1,A,A^2,\dots\}$:
+\begin{align*}
+    \psi(x,y) = \psi_0(x,y) + A\psi_1(x,y) + A^2\psi_2(x,y) + A^3\psi_3(x,y) + O(A^4)
+\end{align*}
+Assuming the swimmer is moving at a constant speed $S$, we can express $S$ in the asymptotic basis $\{1, A, A^2, \dots\}$:
+\begin{align*}
+    S = s_0 + As_1 + A^2s_2 + \dots
+\end{align*}
+and this is the constant speed at which the walls move through the moving reference frame.  Thus the other boundary conditions of the PDE given above are
+\begin{align*}
+    \psi_x(x, \pm L) = 0, \qquad \text{and} \qquad \psi_y(x, \pm L) = S
+\end{align*}
+Thus the differential equation we are trying to solve, along with boundary conditions, is
+\begin{align*}
+    \left\{\begin{array}{rl}
+        \lap^2 \psi &=\ \ \ \ 0 \\
+        \psi_{x}\qty(x, A\sin(kx - \omega t)) &=\ \ \ \ \omega A\cos(kx - \omega t) \\
+        \psi_{y}\qty(x, A\sin(kx - \omega t)) &=\ \ \ \ 0 \\
+        \psi_{x}\qty(x, \pm L) &=\ \ \ \ 0 \\
+        \psi_{y}\qty(x, \pm L) &=\ \ \ \ S
+    \end{array}\right.
+\end{align*}
+Next we utilize the asymptotic expansion of $\psi$ (using the basis $\{1,A,A^2,\dots\}$) to solve for its first few components.  First, the $O(1)$ components:
+\begin{align*}
+    \left\{\begin{array}{rl}
+        \lap^2 \psi_0 &=\ \ \ \ 0 \\
+        \psi_{0_x}\qty(x, 0) &=\ \ \ \ 0 \\
+        \psi_{0_y}\qty(x, 0) &=\ \ \ \ 0 \\
+        \psi_{0_x}\qty(x, \pm L) &=\ \ \ \ 0 \\
+        \psi_{0_y}\qty(x, \pm L) &=\ \ \ \ s_0
+    \end{array}\right.
+\end{align*}
+This implies $\psi_1 \equiv 0$.  Next, the $O(A)$ components:
+\begin{align*}
+    \left\{\begin{array}{rl}
+        \lap^2 \psi_1 &=\ \ \ \ 0 \\
+        \psi_{1_x}\qty(x, 0) &=\ \ \ \ \omega \cos(kx - \omega t) \\
+        \psi_{1_y}\qty(x, 0) &=\ \ \ \ 0 \\
+        \psi_{1_x}\qty(x, \pm L) &=\ \ \ \ 0 \\
+        \psi_{1_y}\qty(x, \pm L) &=\ \ \ \ s_1
+    \end{array}\right.
+\end{align*}
+To solve this, assume the solution has the Fourier form
+\begin{align*}
+    \psi_1(x,y) = \sum_{\substack{n \in \mathbb{N} \\ n \neq 0}} \qty(\qty(A_1 + B_1 y)\sinh(nky) + \qty(C_1 + D_1 y)\cosh(nky))\sin(kx - \omega t) + E_1 + F_1 y + G_1 y^2 + H_1 y^3
+\end{align*}
+Because the flow must be bounded, $G_1 = H_1 = 0$.  Since all of the boundary conditions are derivatives, we can disregard the constant term $E_1$, i.e.~without loss of generality, we can assume $E_1 = 0$.  Also, since the only nonzero Fourier mode in the $x$-derivative has $n = 1$, then
+\begin{align*}
+    \psi_1(x,y) = \qty(\qty(A_1 + B_1 y)\sinh(ky) + \qty(C_1 + D_1 y)\cosh(ky))\sin(kx - \omega t) + F_1 y
+\end{align*}
+Now we consider the boundary conditions:
+\begin{align*}
+    \psi_{1_x}(x,y) &= k\qty(\qty(A_1 + B_1 y)\sinh(ky) + \qty(C_1 + D_1 y)\cosh(ky))\cos(kx - \omega t) \\
+    \implies \omega\cos(kx - \omega t) = \psi_{1_x}(x,0) &= kC_1\cos(kx - \omega t) \\
+    \implies C_1 &= \frac{\omega}{k} \\
+    \implies \psi_1(x,y) &= \qty(\qty(A_1 + B_1 y)\sinh(ky) + \qty(\frac{\omega}{k} + D_1 y)\cosh(ky))\sin(kx - \omega t) + F_1 y
+\end{align*}
+Also,
+\begin{align*}
+    \psi_{1_y}(x,y) &= \qty(\qty(D_1 + k(A_1 + B_1y))\cosh(ky) + \qty(B_1 + \omega + kD_1y)\sinh(ky))\sin(kx - \omega t)+ F_1 \\
+    \implies 0 = \psi_{1_y}(x,0) &= (D_1 + k A_1)\sin(kx - \omega t) + F_1 \\
+    \implies F_1 = 0 \qquad &\text{and} \qquad D_1 + kA_1 = 0 \\
+    \implies \psi_1(x,y) &= \qty(\qty(A_1 + B_1 y)\sinh(ky) + \qty(\frac{\omega}{k} - k A_1 y)\cosh(ky))\sin(kx - \omega t)
+\end{align*}
+Using Maple, we can use the two boundary conditions $\psi_{1_x}(x, \pm L) = 0$ to solve for $A_1$ and $B_1$:
+\begin{align*}
+    A_1 = 0 \qquad &\text{and} \qquad B_1 = -\frac{\omega\cosh(kL)}{kL\sinh(kL)} \\
+    \implies \psi_1(x,y) &= \qty(-\frac{\omega\cosh(kL)}{kL\sinh(kL)}y\sinh(ky) + \frac{\omega}{k}\cosh(ky))\sin(kx - \omega t)
+\end{align*}
+We can then use the boundary conditions $\psi_{1_y}(x, \pm L) = s_1$ to solve for $s_1$:
+\begin{align*}
+    \psi_{1_y}(x,y) &= \qty(-\frac{\omega\cosh(kL)}{kL\sinh(kL)}\omega - \frac{\cosh(kL)}{L\sinh(kL)}\omega y \cosh(ky) + \omega \sinh(k y))\sin(kx - \omega t) \\
+    \implies s_1 = \psi_{1_y}(x,L) &= -\frac{\omega(kL + \cosh(kL)\sinh(kL))\sin(kx - \omega t)}{kL \sinh(kL)} \\
+    \text{and }\ s_1 = \psi_{1_y}(x,-L) &= \frac{\omega(kL + \cosh(kL)\sinh(kL))\sin(kx - \omega t)}{kL \sinh(kL)} = -s_1
+\end{align*}
+Thus $s_1 = 0$.  However, since $kL > 0$ and $\omega > 0$, this is an apparent contradiction.
 
 
 
@@ -165,7 +278,7 @@
             \ddot{L} + \E\dot{L} + L = 0
         \end{align*}
         where $\E = \frac{b}{\sqrt{km}}$.
-    \item
+
         The nondimensionalization appropriate for the limit of vanishing mass is the third of the three given above:
         \begin{align*}
             \E\ddot{L} + \dot{L} + L = 0

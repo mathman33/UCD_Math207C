@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  22 APR 2016 00:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  22 APR 2016 11:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2239,7 +2239,10 @@ File: errors_1.png Graphic file (type png)
 <use errors_1.png>
 Package pdftex.def Info: errors_1.png used on input line 207.
 (pdftex.def)             Requested size: 325.215pt x 243.91064pt.
-
+[3] [4 </Users/samuelfleischer/School/UCD/UCD_Math207C/hw_3-apr_22/standard.png
+> </Users/samuelfleischer/School/UCD/UCD_Math207C/hw_3-apr_22/semilog.png>] [5 
+</Users/samuelfleischer/School/UCD/UCD_Math207C/hw_3-apr_22/errors_epsilon.png>
+ </Users/samuelfleischer/School/UCD/UCD_Math207C/hw_3-apr_22/errors_1.png>]
 Overfull \hbox (6.79999pt too wide) in paragraph at lines 225--227
 [][]
  []
@@ -2249,25 +2252,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 225--227
 
  []
 
-[3] [4 </Users/samuelfleischer/School/UCD/UCD_Math207C/hw_3-apr_22/standard.png
-> </Users/samuelfleischer/School/UCD/UCD_Math207C/hw_3-apr_22/semilog.png>] [5 
-</Users/samuelfleischer/School/UCD/UCD_Math207C/hw_3-apr_22/errors_epsilon.png>
- </Users/samuelfleischer/School/UCD/UCD_Math207C/hw_3-apr_22/errors_1.png>] [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 263.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 263.
+
+Overfull \hbox (17.20764pt too wide) in paragraph at lines 253--253
+[] 
+ []
+
+[6] [7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 288.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 288.
 (/Users/samuelfleischer/School/UCD/UCD_Math207C/hw_3-apr_22/hw_3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 263.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 263.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 288.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 288.
 Package rerunfilecheck Info: File `hw_3.out' has not changed.
 (rerunfilecheck)             Checksum: 3B61F9B5925794A19C5264D7A1553656;90.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 263.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 288.
  ) 
 Here is how much of TeX's memory you used:
- 34443 strings out of 493089
- 779680 string characters out of 6134842
- 955658 words of memory out of 5000000
+ 34446 strings out of 493089
+ 779707 string characters out of 6134842
+ 952660 words of memory out of 5000000
  37327 multiletter control sequences out of 15000+600000
- 99935 words of font info for 105 fonts, out of 8000000 for 9000
+ 100352 words of font info for 107 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,20n,83p,10461b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -2278,10 +2283,10 @@ exlive/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/
 2015/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2015/te
 xmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
 Output written on /Users/samuelfleischer/School/UCD/UCD_Math207C/hw_3-apr_22/hw
-_3.pdf (6 pages, 849394 bytes).
+_3.pdf (7 pages, 801285 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
+ 96 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
+ 14 named destinations out of 1000 (max. 500000)
  49 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -190,7 +190,7 @@
     \begin{align*}
         u(t) &= u_{\text{out}}(t) + u_{\text{in}}(t) - u_{\text{match}}(t) \\
         &= \underbrace{e^{-t} + \E\qty(2e^{-t} - te^{-t})}_{\text{outer layer expasion}} + \underbrace{\qty[1 - e^{-\frac{t}{\E}} - t\qty(1 + e^{-\frac{t}{\E}})] + 2\E\qty[1 - e^{-\frac{t}{\E}}]}_{\text{inner layer expansion}} - \underbrace{\qty[1 - t + 2\E]}_{\text{matched terms}}\\
-        &= \qty[e^{-t} - (1 + t)e^{-\frac{t}{\E}}] + \E\qty[(2 - t)e^{-t} - e^{-\frac{t}{\E}}].
+        &= \qty[e^{-t} - (1 + t)e^{-\frac{t}{\E}}] + \E\qty[(2 - t)e^{-t} - 2e^{-\frac{t}{\E}}].
     \end{align*}
     Figures (\ref{problem_1_graphs}) and (\ref{problem_1_graphs_errors}) depicts the accuracy of the expansion for various values of $\E$.
     \begin{figure}
@@ -216,12 +216,12 @@
 
 
 
-
+\pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \problem{Problem 2}{Compute the leading order composite expansion to the problem
 \begin{align*}
     \E u'' + \sqrt{x}u' - u &= 0, \\
-    u(0) = 0, \qquad u(1) &= \E^2.
+    u(0) = 0, \qquad u(1) &= e^2.
 \end{align*}}
 \begin{proof}
     First let $X = \frac{x - x_0}{\E^\alpha}$ and $U(X) = u(x)$.  Then $x = x_0 + \E^\alpha X$ and
@@ -249,7 +249,32 @@
     \end{align*}
     Assume $U = U_0 + \E U_1 + \E^2 U_2 + \dots$.  Then setting $\E \rightarrow 0$ yields
     \begin{align*}
-        \ddot{U_0} + \sqrt{X}\dot{U_0} = 0 \qquad \implies \qquad U_0(x) = \int \qty[C\exp[-\frac{2}{3}x^{\frac{3}{2}}]]
+        \ddot{U_0} + \sqrt{X}\dot{U_0} = 0 \qquad \implies \qquad U_0(X) = \int_0^X \qty[C\exp[-\frac{2}{3}T^{\frac{3}{2}}]]\dd T \qquad \implies \qquad u_\text{in}(x) \approx \int_0^{x\E^{-\frac{2}{3}}}\qty[C\exp[-\frac{2}{3}T^{\frac{3}{2}}]]\dd T
+    \end{align*}
+    The original outer problem is
+    \begin{align*}
+        \E \ddot{u} + \sqrt{x}\dot{u} - u = 0, \qquad u(0) = 0
+    \end{align*}
+    Assuming $u = u_0 + \E u_1 + \E^2 u_2 + \dots$,
+    \begin{align*}
+        \sqrt{x}\dot{u}_0 - u_0 = 0, \qquad u_0(1) = e^2
+    \end{align*}
+    which has the solution
+    \begin{align*}
+        u_0(x) = e^{2\sqrt{x}} \qquad \implies \qquad u_{\text{out}}(x) \approx e^{2\sqrt{x}}
+    \end{align*}
+    To match $u_\text{in}$ with $u_\text{out}$, we want
+    \begin{align*}
+        \lim_{x \rightarrow 0} u_\text{out} &= \lim_{x \rightarrow \infty} u_\text{in} \\
+        \lim_{x \rightarrow 0} e^{2\sqrt{x}} &= \lim_{x \rightarrow \infty} \int_0^{x\E^{-\frac{2}{3}}}\qty[C\exp[-\frac{2}{3}T^{\frac{3}{2}}]]\dd T \\
+        1 &= \int_0^\infty \qty[C\exp[-\frac{2}{3}T^{\frac{3}{2}}]]\dd T \\
+        \implies C &= \frac{1}{\displaystyle\int_0^\infty \qty[\exp[-\frac{2}{3}T^{\frac{3}{2}}]]\dd T}.
+    \end{align*}
+    Also, this says $u_\text{match} = 1$ (since $u_{\text{match}} = \lim_{x \rightarrow 0} u_{\text{out}} = \lim_{x \rightarrow \infty} u_{\text{in}} = 1$).
+    Thus,
+    \begin{align*}
+        u(x) &\approx u_\text{in}(x) + u_\text{out}(x) - u_\text{match}(x) \\
+        &= e^{2\sqrt{x}} + \displaystyle\frac{\displaystyle\int_0^{x\E^{-\frac{2}{3}}}\qty[\exp[-\frac{2}{3}T^{\frac{3}{2}}]]\dd T}{\displaystyle\int_0^\infty\qty[\exp[-\frac{2}{3}T^{\frac{3}{2}}]]\dd T} - 1
     \end{align*}
 \end{proof}
 

@@ -1,0 +1,258 @@
+\documentclass{article} % A4 paper and 11pt font size
+\setcounter{secnumdepth}{0}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{color}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[makeroom]{cancel}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage[normalem]{ulem}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\makeatletter
+\newcommand{\BIGG}{\bBigg@{3}}
+\newcommand{\vast}{\bBigg@{4}}
+\newcommand{\Vast}{\bBigg@{5}}
+\makeatother
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\E}{\varepsilon}
+\def\Rl{\mathbb{R}}
+\def\Cx{\mathbb{C}}
+
+\newcommand{\Ei}{\text{Ei}}
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancy} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead[L]{\bf Sam Fleischer}
+\fancyhead[C]{\bf UC Davis \\ Applied Mathematics (MAT207C)} % No page header - if you want one, create it in the same way as the footers below
+\fancyhead[R]{\bf Spring 2016}
+
+\fancyfoot[L]{\bf } % Empty left footer
+\fancyfoot[C]{\bf \thepage} % Empty center footer
+\fancyfoot[R]{\bf } % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{25pt} % Customize the height of the header
+
+\newcommand{\VEC}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\ran}{\text{\rm ran }}
+\newcommand{\Hilb}{\mathcal{H}}
+\newcommand{\lap}{\Delta}
+
+\newcommand{\littleo}[1]{\text{\scriptsize$\mathcal{O}$}\qty(#1)}
+
+\DeclareMathOperator*{\esssup}{\text{ess~sup}}
+
+\newcommand{\problem}[2]{
+\vspace{.375cm}
+\boxed{\begin{minipage}{\textwidth}
+    \section{\bf #1}
+    #2
+\end{minipage}}
+}
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.9}
+
+\title{ 
+\normalfont \normalsize 
+\textsc{UC Davis, Applied Mathematics (MAT207C), Spring 2016} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{2pt} \\[0.4cm] % Thin top horizontal rule
+\Huge Homework \#4 \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{\huge Sam Fleischer} % Your name
+
+\date{April 29, 2016} % Today's date or a custom date
+
+\begin{document}\thispagestyle{empty}
+
+\maketitle % Print the title
+
+\makeatletter
+\@starttoc{toc}
+\makeatother
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Problem 1}{Consider the Lagerstrom model for Low Reynolds number flow:
+\begin{gather*}
+    U'' + \frac{2}{R}U' + \E U U' = 0 \\
+    U(1) = 0 \\
+    U(\infty) = 1.
+\end{gather*}
+Compute the leading order expansion of $U'(1)$ in the limit of small $\E$.  This is the analog to Stokes' original calculation for the force on a translating sphere in 3D.}
+\begin{proof}
+    To compute the leading order expansion, ignore all terms smaller than $\order{1}$.  That is, assume $U = U_0 + \order{\E}$.  Then
+    \begin{gather*}
+        U_0'' + \frac{2}{R}U_0' = 0 \\
+        U_0(1) = 0 \\
+        U_0(\infty) = 1.
+    \end{gather*}
+    The differential equation has solution $U_0 = \dfrac{A}{R} + B$.  Then $U_0(\infty) = 1$ implies $B = 1$.  And thus $U_0(1) = 0$ implies $A = -1$.  That is,
+    \begin{align*}
+        U_0(R) = 1 - \frac{1}{R}.
+    \end{align*}
+    And so,
+    \begin{gather*}
+        U(R) = 1 - \frac{1}{R} + \order{\E} \qquad \implies \qquad U'(R) \approx \frac{1}{R^2} \qquad \implies \qquad U'(1) \approx 1
+    \end{gather*}
+\end{proof}
+    
+
+
+
+
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Problem 2}{Compute the expansion of $U'(1)$ up to order $\E$.  You will encounter a problem similar to the ``Whitehead paradox'' which you will reoslve using intermediate scale matching.
+
+You may find the following asymptotic expansion useful for small $r$:
+\begin{equation*}
+    \int_r^\infty \frac{e^{-x}}{x^2}\dd x = \frac{1}{r} + \log(r) + \gamma - 1 + \order{r},
+\end{equation*}
+where $\gamma$ is Euler's constant.}
+\begin{proof}
+    Now assume $U = U_0 + \E U_1 + \order{\E^2}$.  By problem 1, $U_0 = 1 - \dfrac{1}{R}$.  Then
+    \begin{gather*}
+        U_1'' + \frac{2}{R}U_1' = -U_0U_0' \\
+        U_1(1) = 0 \\
+        U_1(\infty) = 0.
+    \end{gather*}
+    The differential equation has the solution $U_1 = \dfrac{C}{R} + D - \dfrac{\log(R)}{R} - \log(R)$.  It is possible for $U_1(1) = 0$, but $U_1(\infty)$ is divergent and hence cannot equal $0$.  Thus $U$ is only a solution of some inner layer in which $R$ is small.  This means we cannot apply the condition at infinity to $U$.  So for $U_0$ from problem 1, we only apply the condition at $1$.  That is $U_0 = \dfrac{A}{R} + B$ and $U_0(1) = 0$.  This implies $A = -B$, and thus $U_0 = A\qty(1 - \dfrac{1}{R})$.  Thus
+    \begin{gather*}
+        U_1'' + \frac{2}{R}U_1' = -U_0U_0' = -A^2\qty(1 - \frac{1}{R})\qty(\frac{1}{R^2}) \\
+        U_1(1) = 0.
+    \end{gather*}
+    The differential equation has the solution $U_1 = -A^2\qty[\dfrac{\log(R)}{R} + \log(R)] + \dfrac{C}{R} + D$.  Then $U_1(1) = 0$ implies $C = -D$, and thus
+    \begin{align*}
+        U_1 = -A^2\qty[\log(R)\qty(\dfrac{1}{R} + 1)] + C\qty(\dfrac{1}{R} - 1)
+    \end{align*}
+    Thus the two-term expansion of the outer solution is
+    \begin{align*}
+        U(R) = A\qty(1 - \frac{1}{R}) + \E\qty[-A^2\qty[\log(R)\qty(\dfrac{1}{R} + 1)] + C\qty(\dfrac{1}{R} - 1)]
+    \end{align*}
+    To find the inner solution, define $r = \E R$ and let $u(r) = U(R)$.  Then
+    \begin{align*}
+        \frac{\dd U}{\dd R} = \E u' \qquad \text{and} \qquad  \frac{\dd^2 U}{\dd R} = \E^2 u''.
+    \end{align*}
+    Then
+    \begin{gather*}
+        u'' + \frac{2}{r}u' + u u' = 0 \\
+        u(\infty) = 1
+    \end{gather*}
+    Supposing $u = u_0 + \E u_1 + \order{\E^2}$, then since $u_0(\infty) = 1$, then $u_0 \equiv 1$.  Then $u = 1 + \E u_1 + \order{\E^2}$, and so
+    \begin{gather*}
+        \E u_1'' + \frac{2}{r}\E u_1' + \qty(1 + u_1')\E u_1' + \order{\E^2} = 0 \\
+        \implies \E \qty[u_1'' + \frac{2}{r} u_1' + u_1'] + \order{\E^2} = 0 \\
+        \implies u_1'' + \qty(\frac{2}{r} + 1)u_1' = 0.
+    \end{gather*}
+    with boundary condition $u_1(\infty) = 0$.  Let $v = u_1'$.  Then the differential equation has the form
+    \begin{align*}
+        v' + \qty(\frac{2}{r} + 1)v = 0,
+    \end{align*}
+    which has the solution
+    \begin{align*}
+        v(r) = E\frac{e^{-r}}{r^2}
+    \end{align*}
+    and thus $u_1$ has the solution
+    \begin{align*}
+        u_1(r) = \int_r^\infty v(t) \dd t + F
+    \end{align*}
+    The boundary condition $u_1(\infty) = 0$ implies $F = 0$ since the integral must converge to $0$ as $r \rightarrow \infty$.  Thus
+    \begin{align*}
+        u_1(r) = E\int_r^\infty \frac{e^{-t}}{t^2}\dd t = E\qty[\frac{1}{r} + \log(r) + \gamma - 1 + \order{r}]
+    \end{align*}
+    And thus the two-term expansion of the inner solution is
+    \begin{align*}
+        u(r) = 1 + \E\qty[E\qty[\frac{1}{r} + \log(r) + \gamma- 1 + \order{r}]] + \order{\E^2}
+    \end{align*}
+    To match the inner and outer solutions, we employ an intermediate timescale $r = \eta r_\eta$ (and hence $R = \frac{\eta r_\eta}{\E}$).  By ``intermediate'', we mean $\E \prec \eta \prec 1$.  Then
+    \begin{align*}
+        u(r) - U(R) &= \underbrace{1 + \E\qty[E\qty[\frac{1}{r} + \log(r) + \gamma - 1 + \order{r}]]}_{\text{two-term expansion of } u(r)} - \underbrace{\qty(A\qty(1 - \frac{1}{R}) + \E\qty[-A^2\qty[\log(R)\qty(\dfrac{1}{R} + 1)] + C\qty(\dfrac{1}{R} - 1)])}_{\text{two-term expansion of } U(R)} + \order{\E^2} \\
+        &= \underbrace{1 + \E\qty[E\qty[\frac{1}{\eta r_\eta} + \log(\eta r_\eta) + \gamma - 1 + \order{\eta r_\eta}]]}_{\text{two-term expansion of } u(\eta r_\eta)} \\
+        &\qquad\qquad\qquad\qquad\qquad - \underbrace{\qty(A\qty(1 - \frac{1}{\frac{\eta r_\eta}{\E}}) + \E\qty[-A^2\qty[\log(\frac{\eta r_\eta}{\E})\qty(\dfrac{1}{\frac{\eta r_\eta}{\E}} + 1)] + C\qty(\dfrac{1}{\frac{\eta r_\eta}{\E}} - 1)])}_{\text{two-term expansion of } U\qty(\frac{\eta r_\eta}{\E})} + \order{\E^2} \\
+        &= \underbrace{1 + \frac{E}{r_\eta}\frac{\E}{\eta} + E\E\log(\eta r_\eta) + E\E\qty(\gamma - 1) + \order{\E\eta r_\eta}}_{\text{two-term expansion of} u(\eta r_\eta)} \\
+        &\ - \underbrace{A + \frac{A}{r_\eta}\frac{\E}{\eta} + A^2\frac{\E^2}{\eta r_\eta}\log(\eta r_\eta) - A^2\frac{\E^2}{\eta r_\eta}\log(\E) + A^2\E\log(\eta r_\eta) - A^2\E\log(\E) - C \frac{\E^2}{\eta r_\eta} + C\E}_{\text{two-term expansion of } U\qty(\frac{\eta r_\eta}{\E})} + \order{\E^2} \\
+        &= \BIGG[1 - A\BIGG] + \BIGG[E + A\BIGG]\frac{\E}{\eta r_\eta} + \BIGG[E\qty(\gamma - 1) + C\BIGG]\E + \littleo{\E},
+    \end{align*}
+    assuming the order relation $\eta \log\eta \prec \E$.  Then in order to match $u$ with $U$, the constants $A$, $C$, and $E$ are
+    \begin{align*}
+        A = 1 \qquad E = -1 \qquad C = \gamma - 1.
+    \end{align*}
+    Thus, define $u_\text{match}$ as
+    \begin{align*}
+        u_\text{match} = 1 - \frac{1}{R} + \qty(1 - \gamma)\E.
+    \end{align*}
+    Noting that $\log(\E R) = \log(\E) + \log(R)$, then the two-term expansion of $u(\E R)$ is
+    \begin{align*}
+        u(\E R) = 1 - \frac{1}{R} - \E \log(\E) - \E\log R - \E\qty(\gamma - 1) + \order{\E R},
+    \end{align*}
+    then the complete two-term expansion of the solution of the differential equation is
+    \begin{align*}
+        U(R) &= \underbrace{1 - \frac{1}{R} - \E \log(\E) - \E\log R - \E\qty(\gamma - 1) + \order{\E R}]}_{\text{two-term expansion of } u(\E R)} + \underbrace{\qty(\qty(1 - \frac{1}{R}) + \E\qty[-\log(R)\qty(\dfrac{1}{R} + 1) + \qty(\gamma - 1)\qty(\dfrac{1}{R} - 1)])}_{\text{two-term expansion of } U(R)} \\
+        &\qquad - \underbrace{\qty[1 - \frac{1}{R} + \qty(1 - \gamma)\E]}_{\text{matched terms}}
+    \end{align*}
+    After collecting terms of similar order, the complete two-term expansion of the solution is
+    \begin{align*}
+        \boxed{U(R) = \BIGG[1 - \frac{1}{R}\BIGG] + \BIGG[-2\log R - (\gamma - 1) + \frac{\gamma - 1 - \log R}{R}\BIGG]\E + \order{\E^2}}
+    \end{align*}
+\end{proof}
+    
+
+
+
+
+
+
+
+
+\end{document}

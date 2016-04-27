@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  26 APR 2016 22:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  27 APR 2016 00:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2240,19 +2240,19 @@ Overfull \hbox (6.13318pt too wide) in paragraph at lines 226--226
  []
 
 [4] [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 258.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 258.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 262.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 262.
 (/Users/samuelfleischer/School/UCD/UCD_Math207C/hw_4-apr_29/hw_4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 258.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 258.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 262.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 262.
 Package rerunfilecheck Info: File `hw_4.out' has not changed.
 (rerunfilecheck)             Checksum: 3B61F9B5925794A19C5264D7A1553656;90.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 258.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 262.
  ) 
 Here is how much of TeX's memory you used:
  34423 strings out of 493089
  779339 string characters out of 6134842
- 954660 words of memory out of 5000000
+ 954658 words of memory out of 5000000
  37315 multiletter control sequences out of 15000+600000
  108319 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2266,7 +2266,7 @@ exlive/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/
 2015/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2015/te
 xmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
 Output written on /Users/samuelfleischer/School/UCD/UCD_Math207C/hw_4-apr_29/hw
-_4.pdf (5 pages, 73641 bytes).
+_4.pdf (5 pages, 73887 bytes).
 PDF statistics:
  74 PDF objects out of 1000 (max. 8388607)
  59 compressed objects within 1 object stream

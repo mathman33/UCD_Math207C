@@ -243,7 +243,11 @@ where $\gamma$ is Euler's constant.}
     \end{align*}
     After collecting terms of similar order, the complete two-term expansion of the solution is
     \begin{align*}
-        \boxed{U(R) = \BIGG[1 - \frac{1}{R}\BIGG] + \BIGG[-2\log R - (\gamma - 1) + \frac{\gamma - 1 - \log R}{R}\BIGG]\E + \order{\E^2}}
+        U(R) = \BIGG[1 - \frac{1}{R}\BIGG] + \BIGG[-2\log R - (\gamma - 1) + \frac{\gamma - 1 - \log R}{R}\BIGG]\E + \order{\E^2}
+    \end{align*}
+    Thus
+    \begin{align*}
+        U'(R) \approx \frac{1}{R^2} - \frac{2}{R} - \frac{-1 - \qty(\gamma - 1 - \log R)}{R^2} \implies \boxed{U'(1) \approx \gamma - 1}
     \end{align*}
 \end{proof}
     

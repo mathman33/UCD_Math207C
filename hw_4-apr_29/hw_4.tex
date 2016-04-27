@@ -247,7 +247,7 @@ where $\gamma$ is Euler's constant.}
     \end{align*}
     Thus
     \begin{align*}
-        U'(R) \approx \frac{1}{R^2} - \frac{2}{R} - \frac{-1 - \qty(\gamma - 1 - \log R)}{R^2} \implies \boxed{U'(1) \approx \gamma - 1}
+        U'(R) \approx \frac{1}{R^2} - \frac{2}{R} - \E\qty[\frac{-1 - \qty(\gamma - 1 - \log R)}{R^2}] \implies \boxed{U'(1) \approx -1 + \gamma\E}
     \end{align*}
 \end{proof}
     

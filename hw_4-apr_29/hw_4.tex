@@ -222,32 +222,28 @@ where $\gamma$ is Euler's constant.}
         &\qquad\qquad\qquad\qquad\qquad - \underbrace{\qty(A\qty(1 - \frac{1}{\frac{\eta r_\eta}{\E}}) + \E\qty[-A^2\qty[\log(\frac{\eta r_\eta}{\E})\qty(\dfrac{1}{\frac{\eta r_\eta}{\E}} + 1)] + C\qty(\dfrac{1}{\frac{\eta r_\eta}{\E}} - 1)])}_{\text{two-term expansion of } U\qty(\frac{\eta r_\eta}{\E})} + \order{\E^2} \\
         &= \underbrace{1 + \frac{E}{r_\eta}\frac{\E}{\eta} + E\E\log(\eta r_\eta) + E\E\qty(\gamma - 1) + \order{\E\eta r_\eta}}_{\text{two-term expansion of} u(\eta r_\eta)} \\
         &\ - \underbrace{A + \frac{A}{r_\eta}\frac{\E}{\eta} + A^2\frac{\E^2}{\eta r_\eta}\log(\eta r_\eta) - A^2\frac{\E^2}{\eta r_\eta}\log(\E) + A^2\E\log(\eta r_\eta) - A^2\E\log(\E) - C \frac{\E^2}{\eta r_\eta} + C\E}_{\text{two-term expansion of } U\qty(\frac{\eta r_\eta}{\E})} + \order{\E^2} \\
-        &= \BIGG[1 - A\BIGG] + \BIGG[E + A\BIGG]\frac{\E}{\eta r_\eta} + \BIGG[E\qty(\gamma - 1) + C\BIGG]\E + \littleo{\E},
+        &= \BIGG[1 - A\BIGG] + \BIGG[E + A\BIGG]\frac{\E}{\eta r_\eta} + \BIGG[E\qty(\gamma - 1) + C - A^2\log(\E)\BIGG]\E + \littleo{\E},
     \end{align*}
-    assuming the order relation $\eta \log\eta \prec \E$.  Then in order to match $u$ with $U$, the constants $A$, $C$, and $E$ are
+    assuming the order relations $\dfrac{\E^2}{\eta} \log\E \prec \E$ and $\dfrac{\E^2}{\eta} \log\eta \prec \E$.  Then in order to match $u$ with $U$, the constants $A$, $C$, and $E$ are
     \begin{align*}
-        A = 1 \qquad E = -1 \qquad C = \gamma - 1.
+        A = 1 \qquad E = -1 \qquad C = \log(\E) + \gamma - 1.
     \end{align*}
     Thus, define $u_\text{match}$ as
     \begin{align*}
-        u_\text{match} = 1 - \frac{1}{R} + \qty(1 - \gamma)\E.
+        u_\text{match} = 1 - \frac{1}{R} + \qty(1 - \gamma - \log(\E R))\E.
     \end{align*}
-    Noting that $\log(\E R) = \log(\E) + \log(R)$, then the two-term expansion of $u(\E R)$ is
+    Then the complete two-term expansion of the solution of the differential equation is
     \begin{align*}
-        u(\E R) = 1 - \frac{1}{R} - \E \log(\E) - \E\log R - \E\qty(\gamma - 1) + \order{\E R},
-    \end{align*}
-    then the complete two-term expansion of the solution of the differential equation is
-    \begin{align*}
-        U(R) &= \underbrace{1 - \frac{1}{R} - \E \log(\E) - \E\log R - \E\qty(\gamma - 1) + \order{\E R}]}_{\text{two-term expansion of } u(\E R)} + \underbrace{\qty(\qty(1 - \frac{1}{R}) + \E\qty[-\log(R)\qty(\dfrac{1}{R} + 1) + \qty(\gamma - 1)\qty(\dfrac{1}{R} - 1)])}_{\text{two-term expansion of } U(R)} \\
-        &\qquad - \underbrace{\qty[1 - \frac{1}{R} + \qty(1 - \gamma)\E]}_{\text{matched terms}}
+        U(R) &= \underbrace{1 - \frac{1}{R} - \E\qty(\log(\E R) + \gamma - 1) + \order{\E R}]}_{\text{two-term expansion of } u(\E R)} + \underbrace{\qty(\qty(1 - \frac{1}{R}) + \E\qty[-\log(R)\qty(\dfrac{1}{R} + 1) + \qty(\gamma - 1)\qty(\dfrac{1}{R} - 1)])}_{\text{two-term expansion of } U(R)} \\
+        &\qquad - \underbrace{\qty[1 - \frac{1}{R} + \qty(1 - \gamma - \log(\E R))\E]}_{\text{matched terms}}
     \end{align*}
     After collecting terms of similar order, the complete two-term expansion of the solution is
     \begin{align*}
-        U(R) = \BIGG[1 - \frac{1}{R}\BIGG] + \BIGG[-2\log R - (\gamma - 1) + \frac{\gamma - 1 - \log R}{R}\BIGG]\E + \order{\E^2}
+        U(R) = \BIGG[1 - \frac{1}{R}\BIGG] + \E\BIGG[\frac{\log(\frac{\E}{R})}{R} - \log(\E R) + \qty(\gamma - 1)\qty(\frac{1}{R} - 1)\BIGG] + \order{\E^2}
     \end{align*}
-    Thus
+    Thus the first derivative is approximately
     \begin{align*}
-        U'(R) \approx \frac{1}{R^2} - \frac{2}{R} - \E\qty[\frac{-1 - \qty(\gamma - 1 - \log R)}{R^2}] \implies \boxed{U'(1) \approx -1 + \gamma\E}
+        U'(R) \approx \frac{1}{R^2} - \E\qty[\frac{-1 - \log(\frac{\E}{R}) + 1 - \gamma - R}{R^2}] \implies \boxed{U'(1) \approx 1 - \E\log(\E)+ \E\qty(-1 - \gamma)}
     \end{align*}
 \end{proof}
     

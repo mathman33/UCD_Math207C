@@ -1,0 +1,239 @@
+\documentclass{article} % A4 paper and 11pt font size
+\setcounter{secnumdepth}{0}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{color}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[makeroom]{cancel}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage[normalem]{ulem}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\makeatletter
+\newcommand{\BIGG}{\bBigg@{3}}
+\newcommand{\vast}{\bBigg@{4}}
+\newcommand{\Vast}{\bBigg@{5}}
+\makeatother
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\E}{\varepsilon}
+\def\Rl{\mathbb{R}}
+\def\Cx{\mathbb{C}}
+
+\newcommand{\Ei}{\text{Ei}}
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancy} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead[L]{\bf Sam Fleischer}
+\fancyhead[C]{\bf UC Davis \\ Applied Mathematics (MAT207C)} % No page header - if you want one, create it in the same way as the footers below
+\fancyhead[R]{\bf Spring 2016}
+
+\fancyfoot[L]{\bf } % Empty left footer
+\fancyfoot[C]{\bf \thepage} % Empty center footer
+\fancyfoot[R]{\bf } % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{25pt} % Customize the height of the header
+
+\newcommand{\VEC}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\ran}{\text{\rm ran }}
+\newcommand{\Hilb}{\mathcal{H}}
+\newcommand{\lap}{\Delta}
+
+\newcommand{\littleo}[1]{\text{\scriptsize$\mathcal{O}$}\qty(#1)}
+
+\DeclareMathOperator*{\esssup}{\text{ess~sup}}
+
+\newcommand{\problem}[2]{
+\vspace{.375cm}
+\boxed{\begin{minipage}{\textwidth}
+    \section{\bf #1}
+    #2
+\end{minipage}}
+}
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.9}
+
+\title{ 
+\normalfont \normalsize 
+\textsc{UC Davis, Applied Mathematics (MAT207C), Spring 2016} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{2pt} \\[0.4cm] % Thin top horizontal rule
+\Huge Homework \#5 \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{\huge Sam Fleischer} % Your name
+
+\date{May 9, 2016} % Today's date or a custom date
+
+\begin{document}\thispagestyle{empty}
+
+\maketitle % Print the title
+
+\makeatletter
+\@starttoc{toc}
+\makeatother
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Problem 1}{For the Van del Pol equation
+\begin{align*}
+    \E \dot{u} &= v + u - \frac{u^3}{3} \\
+    \dot{v} &= -u
+\end{align*}
+we found equations for the inner an outer solutions in class.  On the inner and outer layers, one of the two equations above is in pseudo-steady-state.  Identify the values of $u$ and $v$ where there are corner layers.  Find the equations for the corner layer and identify the thickness of the layer.  Use a balance argument which involves retaining the time derivatives of both state variables.}
+\begin{proof}
+    The following system is considered to be the ``outer'' solution since $\dot{u} = \order{\frac{1}{\E}}$ and $\dot{v} = \order{1}$, that is, $u$ changes very rapidly and $v$ changes at a ``normal'' rate.
+    \begin{equation}
+        \begin{aligned}
+            \E \dot{u} &= v + u - \frac{u^3}{3} \\
+            \dot{v} &= -u.
+        \end{aligned}
+        \tag{outer}
+    \end{equation}
+    We can rescale the system by setting $T = \E t$, $U(T) = u(t)$, and $V(T) = v(t)$.  This is considered to be the ``inner'' solution since $\dot{U} = \order{1}$ and $\dot{V} = \order{\E}$.
+    \begin{equation}
+        \begin{aligned}
+            \dot{U} &= V + U - \frac{U^3}{3} \\
+            \dot{V} &= -\E U.
+        \end{aligned}
+        \tag{inner}
+    \end{equation}
+    The $\order{1}$ equations of the outer problem are
+    \begin{equation}
+        \begin{aligned}
+            0 &= v + u - \frac{u^3}{3} \\
+            \dot{v} &= -u
+        \end{aligned}
+        \tag{outer $\order{1}$}
+        \label{outer_o_1}
+    \end{equation}
+    and the $\order{1}$ equations of the inner problem are
+    \begin{equation}
+        \begin{aligned}
+            \dot{U} &= V + U - \frac{U^3}{3} \\
+            \dot{V} &= 0.
+        \end{aligned}
+        \tag{inner $\order{1}$}
+        \label{inner_o_1}
+    \end{equation}
+    The slow manifold is $v = \frac{u^3}{3} - u$.  This is a positive cubic with zeros $u = (0,0), (\pm\sqrt{3}, 0)$.  There is no $\dot{u}$ term (and hence no explicit horizontal flow) in (\ref{outer_o_1}), but $\dot{v} = -u$ shows us flow is in the negative $v$ direction on the positive $u$ plane and in the positive $v$ direction on the negative $u$ plane.  The flow is toward the maximum, $\qty(-1, \frac{2}{3})$, and the mimimum $\qty(1, -\frac{2}{3})$, and away from the origin.  However the only equilibrium point is $(0,0)$, so we must look at the (\ref{inner_o_1}) system.
+
+    The fast flow is purely in the $U$ directior since $\dot{V} = 0$.  Above the slow manifold there is leftward fast flow, and below the manifold is rightward fast flow.  Since no flow approaches the equilibrium, we are expecting a limit cycle.  There is an inner layer whenever $(u, v) = \qty(\pm 1, \mp \frac{2}{3})$.  In $u$ this is a large sudden shift is value and in derivative.  In $v$ there is little shift in value but large shift in derivative.  This is the corner.
+
+    Next make the following variable shifts:
+    \begin{align*}
+        u = 1 + \E^\gamma \bar{u} \qquad v = -\frac{2}{3} + \E^\beta \bar{v} \qquad t = t_0 + \E^\alpha \bar{t}.
+    \end{align*}
+    Since $\bar{t}$ is arbitrary, set $t_0 = 0$.  Then
+    \begin{align*}
+        \E^{1 + \gamma - \alpha} \dot{\bar{u}} &= \qty(\E^\beta\bar{v} - \frac{2}{3}) + \qty(\E^\gamma\bar{u} + 1) - \frac{\qty(\E^\gamma\bar{u} + 1)^3}{3} = \E^\beta\bar{v} - \frac{\qty(\E^{3\gamma}\bar{u}^3 + 3\E^{2\gamma}\bar{u}^2)}{3} \\
+        \E^{\beta - \alpha}\dot{\bar{v}} &= -(\E^\gamma\bar{u} + 1).
+    \end{align*}
+    The only reasonable option for $\alpha$, $\beta$, and $\gamma$ is setting $\alpha = \beta = \frac{2}{3}$ and $\gamma = \frac{1}{3}$, which yields
+    \begin{align*}
+        \dot{\bar{u}} &= \bar{v} -  \bar{u}^2 - \frac{1}{3}\E\bar{u}^3 \\
+        \dot{\bar{v}} &= -1 - \E^{\frac{1}{3}} \bar{u},
+    \end{align*}
+    and thus the thickness of the layer is $\E^{\frac{2}{3}}$. \pagebreak
+\end{proof}
+    
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Problem 2}{The FitzHigh-Nagumo equations are a model system from electrophysiology to describe the cross membrane electrical potential in neurons:
+\begin{align*}
+    \E \dot{v} &= v(a - v)(v - 1) - w \\
+    \dot{w} &= v - \gamma w,
+\end{align*}
+The variable $v$ is the voltage and $w$ is called a recovery variable.  Suppose that $\E > 0$ is small, $0 < a < 1$, and $\gamma$ is sufficiently large that $v = 0$, $w = 0$ is the only equilibrium.
+
+The single equilibrium is a global attractor: all trajectories approach it.  For some initial conditions, the solution quickly approaches the rest state.  For others the voltage rapidly rises to a large value for some period of time, then overshoots the equilibrium value, and finally approaches the rest state.  This second response is called an action potential.
+
+Analyze the inner and outer later structures of this system to characterize which initial conditions lead to an action potential, and describe the structure of the action potential using a layer analysis.}
+\begin{proof}
+    Set $g(v) = v(a - v)(v - 1)$.  Then the outer $\order{1}$ problem is
+    \begin{align*}
+        w &= g(v) \\
+        \dot{w} &= v - \gamma w
+    \end{align*}
+    and the inner $\order{1}$ problem is
+    \begin{align*}
+        \dot{V} &= g(V) - W \\
+        \dot{W} &= 0
+    \end{align*}
+    The slow manifold is a negative cubic with zeros $(0, 0)$, $(a, 0)$, and $(1, 0)$.  $g'(v) = 0$ gives $v_{1,2} = \frac{(a + 1) \pm \sqrt{(a + 1)^3 - 3a}}{3}$ where $v_1 < v_2$.  Define $w_{i} = g(v_i)$ for $i = 1, 2$.  Thus the minimum is $(v_1, w_1)$ and the maximum is $(v_2, w_2)$.  The line $w = \frac{1}{\gamma}v$ separates the slow flow along this manifold.  Since the line is steep enough, all points on the manifold with $v > 0$ are beneath the line $x = \frac{1}{\gamma}v$.  Flow underneath this line is upward, and flow above this line is downward, so all slow flow approaches the equilibrium $(0, 0)$ and the maximum $(v_2, w_2)$.  The slow manifold can be broken into three parts: $g_1$: the decreasing part from $-\infty$ to $v_1$, $g_2$: the increasing part from $v_1$ to $v_2$, and $g_3$: the decreasing part from $v_2$ to $\infty$.  Trajectories starting above the curve $g_2$ or above the horizontal lines protruding leftward from the minimum and rightward from the maximum never reach $g_3$.  They quickly approach $g_1$ and increase or decrease toward the original.  Trajectories starting below $g_2$ or below the horizontal lines protruding leftward from the minimum and rightward from the maximum always reach the $g_3$ manifold before quickly returning to the $g_1$ manifold.  We expect a corner layer in $v$ and $w$ at $(v_2, w_2)$.
+
+    Next make the following variable shifts:
+    \begin{align*}
+        v = v_2 + \E^\phi \bar{v} \qquad w = w_2 + \E^\beta \bar{w} \qquad t = t_0 + \E^\alpha \bar{t}.
+    \end{align*}
+    Since $\bar{t}$ is arbitrary, set $t_0 = 0$.  Using Maple, with the above substitutions gives
+    \begin{align*}
+        \E^{1 + \phi - \alpha}\dot{\bar{v}} = \E^{3\phi}\bar{v}^3 - \E^{2\phi}\bar{v}^2\sqrt{a^2 - a + a} - \E^\beta \bar{w} \\
+        \E^{\beta - \alpha}\dot{\bar{w}} = v_2 - \gamma w_2 + \E^\phi \bar{v} - \gamma \E^\beta \bar{w}.
+    \end{align*}
+    The only reasonable option for $\alpha$, $\beta$, and $\phi$ is setting $\alpha = \beta = \phi = 1$, which yields
+    \begin{align*}
+        \E\dot{\bar{v}} = \E^3\bar{v}^3 - \E^2\bar{v}^2\sqrt{a^2 - a + a} - \E\bar{w} \\
+        \dot{\bar{w}} = v_2 - \gamma w_2 + \bar{v} - \gamma \bar{w}.
+    \end{align*}
+    and thus the thickness of the layer is $\E^1$.
+\end{proof}
+    
+
+
+
+
+
+
+\end{document}

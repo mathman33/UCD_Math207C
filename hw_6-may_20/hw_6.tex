@@ -1,0 +1,244 @@
+\documentclass{article} % A4 paper and 11pt font size
+\setcounter{secnumdepth}{0}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{color}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[makeroom]{cancel}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage[normalem]{ulem}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\makeatletter
+\newcommand{\BIGG}{\bBigg@{3}}
+\newcommand{\vast}{\bBigg@{4}}
+\newcommand{\Vast}{\bBigg@{5}}
+\makeatother
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\E}{\varepsilon}
+\def\Rl{\mathbb{R}}
+\def\Cx{\mathbb{C}}
+
+\newcommand{\Ei}{\text{Ei}}
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancy} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead[L]{\bf Sam Fleischer}
+\fancyhead[C]{\bf UC Davis \\ Applied Mathematics (MAT207C)} % No page header - if you want one, create it in the same way as the footers below
+\fancyhead[R]{\bf Spring 2016}
+
+\fancyfoot[L]{\bf } % Empty left footer
+\fancyfoot[C]{\bf \thepage} % Empty center footer
+\fancyfoot[R]{\bf } % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{25pt} % Customize the height of the header
+
+\newcommand{\VEC}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\ran}{\text{\rm ran }}
+\newcommand{\Hilb}{\mathcal{H}}
+\newcommand{\lap}{\Delta}
+
+\newcommand{\littleo}[1]{\text{\scriptsize$\mathcal{O}$}\qty(#1)}
+
+\DeclareMathOperator*{\esssup}{\text{ess~sup}}
+
+\newcommand{\problem}[2]{
+\vspace{.375cm}
+\boxed{\begin{minipage}{\textwidth}
+    \section{\bf #1}
+    #2
+\end{minipage}}
+}
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.9}
+
+\title{ 
+\normalfont \normalsize 
+\textsc{UC Davis, Applied Mathematics (MAT207C), Spring 2016} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{2pt} \\[0.4cm] % Thin top horizontal rule
+\Huge Homework \#6 \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{\huge Sam Fleischer} % Your name
+
+\date{May 20, 2016} % Today's date or a custom date
+
+\begin{document}\thispagestyle{empty}
+
+\maketitle % Print the title
+
+\makeatletter
+\@starttoc{toc}
+\makeatother
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Problem 1}{The dimensionless equation of motion of a frictionless pendulum is $$\frac{\dd^2 \theta}{\dd t^2} + \sin \theta = 0.$$  In the limit of small amplitude, the period is $2\pi$ to leading order.  Compute the next term in the expansion of the period for small amplitude.}
+\begin{proof}
+    Let $\tau = \omega t$ where $\omega = \omega_0 + \E \omega_1 + \E^2 \omega_2 + \dots$.  $\omega_0 = 1$ since we are assuming $\lim_{\E\rightarrow 0} \tau = t$.  Then set $\theta(t) = v(\tau)$ where $v(\tau) = \E v_0(\tau) + \E^2 v_1(\tau) + \dots$.  We do not have an $\order{1}$ term in the expansion of $v$ since we are considering the soluton in the limit of small amplitude.  Then
+    \begin{align*}
+        \frac{\dd^2\theta}{\dd t^2} = \omega^2\frac{\dd^2 v}{\dd \tau^2} + \sin v = \omega^2\frac{\dd^2 v}{\dd \tau^2} + v - \frac{v^3}{3!} + \frac{v^5}{5!} - \dots = 0.
+    \end{align*}
+    We can employ the MacLaurin series of $\sin v$ since $v \approx 0$.  Then
+    \begin{align*}
+        \qty(1 + \E \omega_1 + \E^2 \omega_2)\qty(\E v_0'' + \E^2 v_1'' + \dots) + \qty(\E v_0 + \E^2 v_1 + \dots) - \frac{\qty(\E v_0 + \E^2 v_1 + \dots)}{3!} + \order{\E^5} = 0.
+    \end{align*}
+    There is no $\order{1}$ component to this equation since $v \approx 0$.  The $\order{\E}$ equation is
+    \begin{align*}
+        v_0'' + v_0 = 0,
+    \end{align*}
+    which has solution $v_0 = A\cos(\tau + \phi)$.  However, we can neglect phase shift since it has no effect on the period of oscillations.  Also, we can redefine $\E$ as $\E = A\E$ and re-do the entire expansion to get $v_0 = \cos(\tau)$.  The $\order{\E^2}$ equation is
+    \begin{align*}
+        v_1'' + v_1 = -2\omega_1v_0'' = 2\omega_1\cos(\tau).
+    \end{align*}
+    In order to prevent forcing at resonant frequency, we force $\omega_1 = 0$.  The $\order{\E^3}$ equation then reduces to
+    \begin{align*}
+        v_2'' + v_2 = -2\omega_2v_0'' - \frac{\cos^3(\tau)}{3!} = 2\omega_2\cos(\tau) - \frac{1}{6}\qty(\frac{1}{4}\cos(3\tau) - \frac{3}{4}\cos(\tau)) = \qty(2\omega_2 + \frac{1}{8})\cos(\tau) - \frac{1}{24}\cos(3\tau)
+    \end{align*}
+    In order to prevent forcing at resonant frequency, we force $2\omega_2 + \frac{1}{8} = 0$, or $\omega_2 = -\frac{1}{16}$.  Thus $\tau = 1 - \frac{1}{16}\E^2 + \order{\E^3}$.  Then the period $T = \dfrac{2\pi}{\tau}$, i.e.
+    \begin{align*}
+        \boxed{T = \frac{2\pi}{1 - \frac{1}{16}\E^2 + \order{\E^3}}}
+    \end{align*}
+\end{proof}
+    
+
+
+
+
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Problem 2}{Find the first term approximation valid for long time to the initial value problem
+\begin{gather*}
+    \ddot{u} + \E\qty(u^2 - 1)\dot{u} + u = 0 \\
+    u(0) = 0, \qquad \dot{u}(0) = 1.
+\end{gather*}}
+\begin{proof}
+    Let $\tau = \E t$ and $u(t) = v(t,\tau) = v_0(t, \tau) + \E v_1(t, \tau) + \order{\E^2}$.  Then
+    \begin{align*}
+        \frac{\dd u}{\dd t} = \frac{\partial v}{\partial t} + \E\frac{\partial v}{\partial \tau} \qquad \text{and} \qquad \frac{\dd^2 u}{\dd t^2} = \frac{\partial^2 v}{\partial t^2} + 2\E\frac{\partial^2 v}{\partial t\partial \tau} + \E^2\frac{\partial^2 v}{\partial \tau^2}.
+    \end{align*}
+    Then
+    \begin{gather*}
+        \ddot{u} + \E(u^2 - 1)\dot{u} + u = 0 \\
+        \implies \frac{\partial^2 v_0}{\partial t^2} + \E\qty(2\frac{\partial^2 v_0}{\partial t \partial \tau} + \frac{\partial^2 v_1}{\partial t^2}) + \order{\E^2} + \E\qty(v_0^2 - 1)\frac{\partial v_0}{\partial t} + \order{\E^2} + v_0 + \E v_1 = 0.
+    \end{gather*}
+    Then the $\order{1}$ equation is a simple harmonic oscillator in $t$:
+    \begin{equation}
+        \frac{\partial^2 v_0}{\partial t^2} + v_0 = 0,
+        \tag{$\order{1}$ equation}
+    \end{equation}
+    which implies
+    \begin{align*}
+        v_0(t, \tau) &= A(\tau)e^{it} + \overline{A}(\tau)e^{-it}, \\
+        \frac{\partial v_0}{\partial t}(t, \tau) &= i\qty[A(\tau)e^{it} - \overline{A}(\tau)e^{-it}], \qquad \text{and} \\
+        \frac{\partial^2 v_0}{\partial t\partial \tau}(t, \tau) &= i\qty[A'(\tau)e^{it} - \overline{A}'(\tau)e^{-it}].
+    \end{align*}
+    Then the $\order{\E}$ equation is a simple harmonic oscillator in $t$, as well as additional forcing terms determined by $v_0$:
+    \begin{equation}
+        \frac{\partial^2 v_1}{\partial t^2} + v_1 = -2\frac{\partial^2 v_0}{\partial t\partial \tau} - \qty(v_0^2 - 1)\frac{\partial v_)}{\partial t},
+        \tag{$\order{\E}$ equation}
+    \end{equation}
+    which implies
+    \begin{align*}
+        \frac{\partial^2 v_1}{\partial t^2} + v_1 &= -i A^3(\tau)e^{3it} + i\qty[2A'(\tau) - A^2(\tau)\overline{A}(\tau) + A(\tau)]e^{it} +i \overline{A}^3(\tau)e^{-3it} - i\qty[2\overline{A}'(\tau) - \overline{A}^2(\tau)A(\tau) + \overline{A}(\tau)]e^{-it}.
+    \end{align*}
+    In order to prevent resonant forcing terms (which are the $e^{it}$ and $e^{-it}$ terms), we require the following:
+    \begin{equation}
+        2A'(\tau) - A^2(\tau)\overline{A}(\tau) + A(\tau) = 0.
+        \tag{dissonance requirement}
+        \label{diss_req}
+    \end{equation}
+    To solve this, split $A(\tau)$ into it's magnitutde and argument:
+    \begin{align*}
+        A(\tau) = r(\tau)e^{i\theta(\tau)}
+    \end{align*}
+    Then the (\ref{diss_req}) implies
+    \begin{align*}
+        \qty(2r' + 2i\theta'r + r^3 - r)e^{i\theta} = 0 \\
+        \implies \begin{cases}
+            2r' + r^3 - r &= 0\\
+            -2\theta'r &= 0
+        \end{cases}
+    \end{align*}
+    Since $r = 0 \implies A = 0 \implies v_0 = 0 \implies u \approx 0$ is not what we are looking for, this means $\theta' = 0$, i.e.~$\theta(\tau) = \theta_0 \in \Rl$.  Also, $2r' + r^3 - r = 0$ implies
+    \begin{align*}
+        r(\tau) = \pm\sqrt{\frac{Ke^{\tau}}{1 + Ke^{\tau}}}
+    \end{align*}
+    for some $K \in Rl$.  Since the magnitude is defined to be positive, we choose the positive branch for $r$.  Then
+    \begin{align*}
+        A(\tau) = \sqrt{\frac{Ke^{\tau}}{1 + Ke^{\tau}}}e^{i\theta_0},
+    \end{align*}
+    which implies
+    \begin{align*}
+        u(t) \approx 2\sqrt{\frac{Ke^{\E t}}{1 + Ke^{\E t}}}\cos\qty(\theta_0 + t).
+    \end{align*}
+    The initial condition $u(0) = 0$ implies $\theta_0 = \qty(\frac{1 + 2k}{2})\pi$ for any $k \in \mathbb{Z}$.  Since $\cos\qty(t \pm \frac{\pi}{2}) = \mp\sin(t)$, then
+    \begin{align*}
+        u(t) \approx \pm 2\sqrt{\frac{Ke^{\E t}}{1 + Ke^{\E t}}}\sin(t),
+    \end{align*}
+    andthe initial condition $\dot{u}(0) = 1$ subsequentally implies
+    \begin{align*}
+        1 = \pm2 \sqrt{\frac{K}{1 + K}}, \qquad \text{and thus} \qquad K = \frac{1}{3}.
+    \end{align*}
+    We choose the positive branch to match the initial condition, i.e.~restricting the value $k$ to odd integers.  Finally, the full first-order solution is
+    \begin{align*}
+        \boxed{u(t) \approx 2\sqrt{\frac{e^{\E t}}{3 + e^{\E t}}}\sin(t)}
+    \end{align*}
+\end{proof}
+    
+
+
+
+
+
+
+\end{document}

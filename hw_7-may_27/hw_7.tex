@@ -264,8 +264,13 @@ which enforce continuity of the solution and continuity of the flux.  Derive a h
     \end{align*}
     We can solve this system numerically and plot the solution $u = \overline{a}\cos(t + \overline{\phi})$, as seen in the figure.  For reference, we also solve the system $\ddot{v} + 2\E\dot{v} + v = 0$ with initial condition $v(0) = 1$ and $v'(0) = 0$:
     \begin{align*}
-        v(t) = \cos(\qty(\E - \sqrt{1 - \E^2})t)
+        v(t) = e^{-\E t}\cos(\qty(\sqrt{1 - \E^2})t)
     \end{align*}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=\textwidth]{problem_2.png}
+    \end{figure}
 \end{proof}
 
 

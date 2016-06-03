@@ -1,0 +1,200 @@
+\documentclass{article} % A4 paper and 11pt font size
+\setcounter{secnumdepth}{0}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{color}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[makeroom]{cancel}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage[normalem]{ulem}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\makeatletter
+\newcommand{\BIGG}{\bBigg@{3}}
+\newcommand{\vast}{\bBigg@{4}}
+\newcommand{\Vast}{\bBigg@{5}}
+\makeatother
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\dy}{\partial_y}
+\newcommand{\dyy}{\partial_{yy}}
+\newcommand{\dxx}{\partial_{xx}}
+\newcommand{\dxy}{\partial_{xy}}
+\newcommand{\dyyy}{\partial_{yyy}}
+\newcommand{\dxxx}{\partial_{xxx}}
+\newcommand{\dx}{\partial_x}
+\newcommand{\E}{\varepsilon}
+\def\Rl{\mathbb{R}}
+\def\Cx{\mathbb{C}}
+
+\newcommand{\Ei}{\text{Ei}}
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancy} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead[L]{\bf Sam Fleischer}
+\fancyhead[C]{\bf UC Davis \\ Applied Mathematics (MAT207C)} % No page header - if you want one, create it in the same way as the footers below
+\fancyhead[R]{\bf Spring 2016}
+
+\fancyfoot[L]{\bf } % Empty left footer
+\fancyfoot[C]{\bf \thepage} % Empty center footer
+\fancyfoot[R]{\bf } % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{25pt} % Customize the height of the header
+
+\newcommand{\VEC}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\ran}{\text{\rm ran }}
+\newcommand{\Hilb}{\mathcal{H}}
+\newcommand{\lap}{\Delta}
+
+\newcommand{\littleo}[1]{\text{\scriptsize$\mathcal{O}$}\qty(#1)}
+
+\DeclareMathOperator*{\esssup}{\text{ess~sup}}
+
+\newcommand{\problem}[2]{
+\vspace{.375cm}
+\boxed{\begin{minipage}{\textwidth}
+    \section{\bf #1}
+    #2
+\end{minipage}}
+}
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.9}
+
+\title{ 
+\normalfont \normalsize 
+\textsc{UC Davis, Applied Mathematics (MAT207C), Spring 2016} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{2pt} \\[0.4cm] % Thin top horizontal rule
+\Huge Homework \#8 \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{\huge Sam Fleischer} % Your name
+
+\date{June 3, 2016} % Today's date or a custom date
+
+\begin{document}\thispagestyle{empty}
+
+\maketitle % Print the title
+
+\makeatletter
+\@starttoc{toc}
+\makeatother
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Problem 1}{Derive the leading order approximation to the general solution of $$\E^3 u''' - q(x) u = 0 \qquad q(0) = 0$$ using WKB in the limit of small $\E$.}
+\begin{proof}
+    First suppose the solution $u$ is of the form $$u(x) = \exp[\frac{1}{\delta(\E)}S_0(x) + S_1(x) + \delta(\E) S_2(x) + \dots].$$  Then $$\E^3\qty[\qty(\frac{1}{\delta}\dddot{S_0} + \dddot{S_1} + \delta\dddot{S_2} + \dots) + \qty(\frac{1}{\delta}\dot{S_0} + \dot{S_1} + \delta\dot{S_2} + \dots)^3 + 3\qty(\frac{1}{\delta}\ddot{S_0} + \ddot{S_1} + \delta\ddot{S_2} + \dots)\qty(\frac{1}{\delta}\dot{S_0} + \dot{S_1} + \delta\dot{S_2} + \dots)]u = qu.$$  We can cancel $u(x)$ on each side since exponentials are nonzero.  Also, we force $\delta\qty(\E) = \E$ in order to match at leading order (which is $\order{1}$).  Then the $\order{1}$ equation is $$\qty(\dot{S_0})^3 = q \qquad \iff \qquad \dot{S_0} = \exp[i\theta]\sqrt[3]{q},$$ where $\theta = 0$, $\frac{2\pi}{3}$, or $\frac{-2\pi}{3}$.  The $\order{\E}$ equation is $$3\ddot{S_0}\dot{S_0} + 3\qty(\dot{S_0})^2\dot{S_1} = 0 \qquad \iff \qquad \dot{S_1} = -\frac{\ddot{S_0}}{\dot{S_0}} = - \frac{\dd}{\dd x}\qty(\ln \dot{S_0})$$ which implies $$S_1 = -\ln\dot{S_0} + K = -\ln[\exp[i\theta]\sqrt[3]{q}] + K = -\frac{1}{3}\ln q -i\theta + K = -\frac{1}{3}\ln q + \tilde{K}.$$  Finally,
+    \begin{align*}
+        u(x) &= \exp[\frac{1}{\E}S_0(x) + S_1(x) + \E S_2(x) + \dots] \\
+        &= \exp[\frac{1}{\E}\int_{-\infty}^x\sqrt[3]{q(s)}\dd s - \frac{1}{3}\ln q + \tilde{K}] \\
+        &= \exp[\frac{1}{\E}\int_{-\infty}^x\sqrt[3]{q(s)}\dd s]\exp[\ln\frac{1}{\sqrt[3]{q}}]\exp[\tilde{K}] \\
+        &= \frac{\hat{K}}{\sqrt[3]{q(x)}}\exp[\frac{1}{\E}\int_{-\infty}^x \sqrt[3]{q(s)}\dd s]
+    \end{align*}
+\end{proof}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Problem 2}{Derive connection formulas for $$\E^2 u'' - q(x) u = 0,$$ where
+\begin{gather*}
+    q(x) > 0 \text{ for } x > 0 \\
+    q(x) < 0 \text{ for } x < 0 \\
+    \lim_{x\rightarrow 0^+} = a^2 > 0 \\
+    \lim_{x\rightarrow 0^-} = -b^2 < 0.
+\end{gather*}
+and give an expansion for the leading order general solution in the limit of small $\E$.}
+\begin{proof}
+    In class we showed the WKB approximation is
+    \begin{align*}
+        u(x) = \begin{cases}
+            u_L(x) & \text{ if } x < 0 \\
+            u_R(x) & \text{ if } x > 0
+        \end{cases}
+    \end{align*}
+    where
+    \begin{align*}
+        u_L(x) &= \abs{q(x)}^{-\frac{1}{4}}\qty[A_L\exp[-\frac{1}{\E}\int_x^0\sqrt{q(s)}\dd s] + B_L\exp[-\frac{1}{\E}\int_x^0\sqrt{q(s)}\dd s]], \qquad \text{and} \\
+        u_R(x) &= q(x)^{-\frac{1}{4}}\qty[A_R\exp[-\frac{1}{\E}\int_0^x\sqrt{q(s)}\dd s] + B_R\exp[-\frac{1}{\E}\int_0^x\sqrt{q(s)}\dd s]].
+    \end{align*}
+    There is an inner layer located at $x = 0$, so we define $X = \E^{-\alpha}x$ with $U(X) = u(x)$.  Thus $$\E^{2 - 2\alpha}\ddot{U} - q(\E^\alpha X)U = 0.$$  We can Taylor expand $q$ on the left and right, and so
+    \begin{align*}
+        \E^{2 - 2\alpha}\ddot{U}_L - \qty(-b^2 + \dot{q}_L(0)\E^\alpha X + \dots)U_L &= 0, \qquad \text{and} \\
+        \E^{2 - 2\alpha}\ddot{U}_R - \qty(a^2 + \dot{q}_R(0)\E^\alpha X + \dots)U_R &= 0.
+    \end{align*}
+    Similar to Problem 1, matching at leading order (which is $\order{1}$) forces $\alpha = 1$.  Thus the $\order{1}$ equations are
+    \begin{align*}
+        \ddot{U}_L + b^2 U_L &= 0, \\
+        \ddot{U}_R - a^2 U_R &= 0,
+    \end{align*}
+    which has solution
+    \begin{align*}
+        U(X) \approx \begin{cases}
+            A_1 \cos(bX) + B_1 \sin(bX) & \text{ if } X < 0\\
+            A_2 \exp(aX) + B_2 \exp(-aX) & \text{ if } X > 0.
+        \end{cases}
+    \end{align*}
+    To ensure $U$ is continuous and has continuous first derivative, we must require $A_1 = A_2 + B_2$ and $B_1 = \frac{a}{b}\qty(A_2 - B_2)$.  Defining $A \coloneqq A_2$ and $B \coloneqq B_2$ gives us
+    \begin{align*}
+        U(X) \approx \begin{cases}
+            (A + B) \cos(bX) + \frac{a}{b}(A - B) \sin(bX) & \text{ if } X < 0\\
+            A \exp(aX) + B \exp(-aX) & \text{ if } X > 0.
+        \end{cases}
+    \end{align*}
+\end{proof}
+
+
+
+
+
+
+\end{document}

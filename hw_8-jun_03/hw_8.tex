@@ -159,14 +159,12 @@ and give an expansion for the leading order general solution in the limit of sma
         u(x) = \begin{cases}
             u_L(x) & \text{ if } x < 0 \\
             u_R(x) & \text{ if } x > 0
+        \end{cases}\ \ = \begin{cases}
+            \abs{q(x)}^{-\frac{1}{4}}\qty[A_L\exp[-\frac{1}{\E}\int_x^0\sqrt{q(s)}\dd s] + B_L\exp[-\frac{1}{\E}\int_x^0\sqrt{q(s)}\dd s]] & \text{ if } x < 0 \\
+            q(x)^{-\frac{1}{4}}\qty[A_R\exp[\frac{1}{\E}\int_0^x\sqrt{q(s)}\dd s] + B_R\exp[\frac{1}{\E}\int_0^x\sqrt{q(s)}\dd s]] & \text{ if } x > 0
         \end{cases}
     \end{align*}
-    where
-    \begin{align*}
-        u_L(x) &= \abs{q(x)}^{-\frac{1}{4}}\qty[A_L\exp[-\frac{1}{\E}\int_x^0\sqrt{q(s)}\dd s] + B_L\exp[-\frac{1}{\E}\int_x^0\sqrt{q(s)}\dd s]], \qquad \text{and} \\
-        u_R(x) &= q(x)^{-\frac{1}{4}}\qty[A_R\exp[-\frac{1}{\E}\int_0^x\sqrt{q(s)}\dd s] + B_R\exp[-\frac{1}{\E}\int_0^x\sqrt{q(s)}\dd s]].
-    \end{align*}
-    There is an inner layer located at $x = 0$, so we define $X = \E^{-\alpha}x$ with $U(X) = u(x)$.  Thus $$\E^{2 - 2\alpha}\ddot{U} - q(\E^\alpha X)U = 0.$$  We can Taylor expand $q$ on the left and right, and so
+    There is an inner layer located at $x = 0$, so we define $X = \E^{-\alpha}x$ with $U(X) = u(x)$.  Additionally, we can Taylor expand $q$ on the left and right, and so, since $\displaystyle\lim_{x \rightarrow 0^-}q_L(x) = -b^2$ and $\displaystyle\lim_{x \rightarrow 0^+}q_R(x) = a^2$,
     \begin{align*}
         \E^{2 - 2\alpha}\ddot{U}_L - \qty(-b^2 + \dot{q}_L(0)\E^\alpha X + \dots)U_L &= 0, \qquad \text{and} \\
         \E^{2 - 2\alpha}\ddot{U}_R - \qty(a^2 + \dot{q}_R(0)\E^\alpha X + \dots)U_R &= 0.
@@ -183,12 +181,63 @@ and give an expansion for the leading order general solution in the limit of sma
             A_2 \exp(aX) + B_2 \exp(-aX) & \text{ if } X > 0.
         \end{cases}
     \end{align*}
-    To ensure $U$ is continuous and has continuous first derivative, we must require $A_1 = A_2 + B_2$ and $B_1 = \frac{a}{b}\qty(A_2 - B_2)$.  Defining $A \coloneqq A_2$ and $B \coloneqq B_2$ gives us
+    To ensure $U$ is continuous and has a continuous first derivative, we must require $A_1 = A_2 + B_2$ and $B_1 = \frac{a}{b}\qty(A_2 - B_2)$.  Defining $A \coloneqq A_2$ and $B \coloneqq B_2$ gives us
     \begin{align*}
         U(X) \approx \begin{cases}
             (A + B) \cos(bX) + \frac{a}{b}(A - B) \sin(bX) & \text{ if } X < 0\\
             A \exp(aX) + B \exp(-aX) & \text{ if } X > 0.
         \end{cases}
+    \end{align*}
+    Connecting $U_L$ with $u_L$ and $U_R$ with $u_R$ will ensure a connected $u$ since we have already ensured $U$ is continuous at $0$.  Thus, we define an intermediate scale $x = \eta x_\eta$ (and thus $X = \frac{\eta x_\eta}{\E}$).
+    \begin{itemize}
+        \item
+            Lets first match the left hand side.
+            \begin{align*}
+                u_L(x) = u_L(\eta x_\eta) &= \abs{q(\eta x_\eta)}^{-\frac{1}{4}}\qty[A_L\exp[-\frac{1}{\E}\int_{\eta x_\eta}^0 \sqrt{q(s)} \dd s] + B_L \exp[\frac{1}{\E}\int_{\eta x_\eta}^0 \sqrt{q(s)}\dd s]] \\
+                U_L(X) = U_L\qty(\frac{\eta x_\eta}{\E}) &= (A + B)\cos(\frac{b\eta x_\eta}{\E}) + \frac{a}{b}\sin\qty(\frac{b\eta x_\eta}{\E})
+            \end{align*}
+            Next we can Taylor expand each integral in $u_L$, yielding
+            \begin{align*}
+                u_L(x) = \abs{q(\eta x_\eta)}^{-\frac{1}{4}}\qty[A_L\exp[\frac{\eta x_\eta}{\E}\sqrt{q(\eta x_\eta)}] + B_L\exp[-\frac{\eta x_\eta}{\E}\sqrt{q(\eta x_\eta)}]].
+            \end{align*}
+            To perform simple matching, consider $\eta x_\eta \rightarrow 0$ (and since $q$ is smooth, $q(\eta x_\eta) \rightarrow -b^2$).
+            \begin{align*}
+                u_L(\eta x_\eta) \rightarrow b^{-\frac{1}{2}}\qty[A_L \exp[\frac{\eta x_\eta}{\E}bi] + B_L \exp[-\frac{\eta x_\eta}{\E}bi]]
+            \end{align*}
+            In order to compare terms, we write each $\sin$ and $\cos$ in $U_L$ in terms of complex exponentials:
+            \begin{align*}
+                U_L\qty(\frac{\eta x_\eta}{\E}) = \frac{1}{2}\qty(A + B + \frac{a}{b}\qty(A - B))\exp[\frac{\eta x_\eta}{\E}bi] + \frac{1}{2}\qty(A + B - \frac{a}{b}\qty(A - B))\exp[-\frac{\eta x_\eta}{\E}bi].
+            \end{align*}
+            Matching requires
+            \begin{align*}
+                \boxed{b^{-\frac{1}{2}}A_L = \frac{1}{2}\qty(A + B + \frac{a}{b}(A - B)) \qquad \text{and} \qquad b^{-\frac{1}{2}}B_L = \frac{1}{2}\qty(A + B - \frac{a}{b}\qty(A - B))}
+            \end{align*}
+        \item
+            Similarly, on the right side, 
+            \begin{align*}
+                u_R(x) = u_R(\eta x_\eta) &= q(\eta x_\eta)^{-\frac{1}{4}}\qty[A_R\exp[-\frac{1}{\E}\int_0^{\eta x_\eta} \sqrt{q(s)} \dd s] + B_R \exp[\frac{1}{\E}\int_0^{\eta x_\eta} \sqrt{q(s)}\dd s]] \\
+                U_R(X) = U_R\qty(\frac{\eta x_\eta}{\E}) &= A\exp[\frac{a\eta x_\eta}{\E}] + B\exp\qty[-\frac{a\eta x_\eta}{\E}]
+            \end{align*}
+            Next we can Taylor expand each integral in $u_R$, yielding
+            \begin{align*}
+                u_L(x) = q(\eta x_\eta)^{-\frac{1}{4}}\qty[A_R\exp[-\frac{\eta x_\eta}{\E}\sqrt{q(\eta x_\eta)}] + B_R\exp[\frac{\eta x_\eta}{\E}\sqrt{q(\eta x_\eta)}]].
+            \end{align*}
+            To perform simple matching, consider $\eta x_\eta \rightarrow 0$ (and since $q$ is smooth, $q(\eta x_\eta) \rightarrow a^2$).
+            \begin{align*}
+                u_R(\eta x_\eta) \rightarrow a^{-\frac{1}{2}}\qty[A_R \exp[-\frac{a\eta x_\eta}{\E}] + B_R\exp[\frac{a\eta x_\eta}{\E}]]
+            \end{align*}
+            Thus, in order to match $u_R$ with $U_R$, we require
+            \begin{align*}
+                \boxed{A = a^{-\frac{1}{2}}B_R \qquad \text{and} \qquad B = a^{-\frac{1}{2}}A_R.}
+            \end{align*}
+    \end{itemize}
+    Finally, the leading order solutioin is
+    \begin{align*}
+        \boxed{u(x) = \begin{cases}
+            \frac{\sqrt{b}}{2}\abs{q(x)}^{-\frac{1}{4}}\BIGG[\qty(A + B + \frac{a}{b}(A - B))\exp[-\frac{1}{\E}\int_x^0\sqrt{q(s)}\dd s] \\
+            \qquad \qquad \ \ \ \ \ \hspace{1px} + \qty(A + B - \frac{a}{b}\qty(A - B))\exp[\frac{1}{\E}\int_x^0\sqrt{q(s)}\dd s]\BIGG] & \text{ if } x < 0 \\
+            \sqrt{a}q(x)^{-\frac{1}{4}}\BIGG[B\exp[-\frac{1}{\E}\int_0^x\sqrt{q(s)}\dd s] + A\exp[\frac{1}{\E}\int_0^x\sqrt{q(s)}\dd s]\BIGG] & \text{ if } x > 0
+        \end{cases}}
     \end{align*}
 \end{proof}
 
